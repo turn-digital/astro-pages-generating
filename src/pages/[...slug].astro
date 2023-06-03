@@ -1,0 +1,41 @@
+---
+export async function getStaticPaths() {
+  const pages = [
+    {
+      slug: "vlad",
+      name: "Vlad",
+      age: "25",
+      sex: "male"
+    },
+    {
+      slug: "artem",
+      name: "Artem",
+      age: "22",
+      sex: "male"
+    },
+    {
+      slug: "ira",
+      name: "Ira",
+      age: "25",
+      sex: "female"
+    },
+  ];
+  return pages.map(({ slug, name, age, sex }) => {
+    return {
+      params: { slug },
+      props: { name, age, sex },
+    };
+  });
+}
+
+const { name, age, sex } = Astro.props;
+---
+<html>
+  <head>
+    <title>{name}</title>
+  </head>
+  <body>
+    <h1>This is the page about {name}</h1>
+    <p>The age is {age} and the sex is {sex}</p>
+  </body>
+</html>

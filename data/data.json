@@ -1,0 +1,20 @@
+[
+    {
+      "slug": "vlad",
+      "name": "Vlad",
+      "age": "25",
+      "sex": "male"
+    },
+    {
+      "slug": "artem",
+      "name": "Artem",
+      "age": "22",
+      "sex": "male"
+    },
+    {
+      "slug": "ira",
+      "name": "Ira",
+      "age": "25",
+      "sex": "female"
+    }
+  ]
