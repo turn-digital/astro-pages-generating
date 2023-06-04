@@ -1,26 +1,25 @@
 ---
 export async function getStaticPaths() {
-  const pages = [
-    {
-      slug: "vlad",
-      name: "Vlad",
-      age: "25",
-      sex: "male"
-    },
-    {
-      slug: "artem",
-      name: "Artem",
-      age: "22",
-      sex: "male"
-    },
-    {
-      slug: "ira",
-      name: "Ira",
-      age: "25",
-      sex: "female"
-    },
-  ];
-  return pages.map(({ slug, name, age, sex }) => {
+  const spreadsheetId = '1nohsvC1XmDUOb_0x2V-OVuyILQdMLGJOZ1R7SBtTBHM';
+const sheetName = 'test';
+const apiKey = 'AIzaSyBicSR944LWHYRKbydf2xgkq1AlYYnZ4K0';
+
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A1:Z100?key=${apiKey}`;
+
+const response = await fetch(url);
+const apiData = await response.json();
+
+const data = apiData.values; // Assuming the actual data is contained in apiData.values
+
+// Transform the data array into an array of objects
+const formattedData = data.slice(1).map(([slug, name, age, sex]) => ({
+	slug,
+	name,
+	age,
+	sex
+  }));
+  
+  return formattedData.map(({ slug, name, age, sex }) => {
     return {
       params: { slug },
       props: { name, age, sex },
